@@ -33,14 +33,19 @@ Instructions:
 
 Menjalankan:
 - Menggunakan Docker
-    - docker-compose up
+    - docker build -t bahnmaze:20180411137 .
+    - docker run -p 5000:5000 -it --rm --name bahnmazeweb  bahnmaze:20180411137
 - Menggunakan Manual
     - python3 -m venv env
     - source env/bin/activate
-    = source .env
+    - source .env
     - pip install -r requirement.txt
     - yarn
     atau
     - npm install
     - python run.py
 
+
+Untuk Login
+- email: suryakencana007@gmail.com
+- kata sandi: Pass1234

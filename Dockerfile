@@ -1,6 +1,6 @@
 FROM node:8-alpine
 
-ENV DATABASE_URL="sqlite:///circleapp.db"
+ENV DATABASE_URL="sqlite:///BahnMaze.db"
 
 RUN apk add --update \
     python3
@@ -21,5 +21,4 @@ RUN yarn
 EXPOSE 5000
 
 # Command untuk development mode
-
 CMD ["python3", "run.py"]
