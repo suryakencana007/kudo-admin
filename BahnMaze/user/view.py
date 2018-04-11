@@ -1,6 +1,5 @@
 from baka import log
 from baka.response import JSONAPIResponse
-from pyramid.security import Allow, Everyone, Authenticated
 from sqlalchemy.exc import SQLAlchemyError
 
 from BahnMaze.app import app

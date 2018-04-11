@@ -1,5 +1,5 @@
 baka==0.4.3.dev1
 baka-armor==0.1.dev1
-baka-tenshi==1.0.3.dev10
+baka-tenshi==1.0.3.dev11
 pyramid_mako
 colander

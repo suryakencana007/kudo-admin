@@ -2,8 +2,8 @@ import datetime
 
 
 import sqlalchemy
-from passlib.hash import argon2
-from baka_tenshi import DB, Model, util
+
+from baka_tenshi import DB, Model, util, verify_password
 from baka_tenshi.type import GUID, PasswordType
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -74,4 +74,4 @@ class Pengguna(Model):
 
     @classmethod
     def verify_password(cls, password, hash):
-        return argon2.verify(password, hash)
+        return verify_password(password, hash)

@@ -18,9 +18,8 @@ class LoginPengguna(object):
 @LoginPengguna.GET(renderer='BahnMaze:login/templates/login.html')
 def login_pengguna(page, request):
     if request.authenticated_userid:
-        return HTTPFound(
-            location=request.route_url('daftar_pengguna')
-        )
+        return app.redirect(request.route_url('daftar_pengguna'))
+
     return {'title': page._title}
 
 
@@ -53,9 +52,7 @@ def logout_pengguna(request):
 
 
 def forbidden(request):
-    return HTTPFound(
-        location=request.route_url('login_pengguna')
-    )
+    return app.redirect(request.route_url('login_pengguna'))
 
 def includeme(config):
     config.add_forbidden_view(forbidden)
