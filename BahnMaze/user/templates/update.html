@@ -1,0 +1,29 @@
+-inherit file="BahnMaze:templates/_base.html"
+
+-def page_title()
+  ${title or ''}
+
+
+<%self.widgets:panel>
+  .row
+    .col-md-12
+      ${errors or ''}
+  .row
+    .col-md-12.col-xs-12
+      h2.red.title
+        span ${'Form Ubah Data Pengguna'}
+
+      ${baka.ui.tags.form(
+        action or request.url,
+        class_="_ajax %s" % ('readonly' if readonly else ''),
+        autocomplete="off",
+        hidden_fields=[('csrf_token', request.session.get_csrf_token())])}
+
+      <%self.widgets:textfield value="${username or None}" required='True' name="username" label="${u'Nama Pengguna'}" placeholder="${u'Nama Pengguna'}"  />
+      <%self.widgets:textfield value="${email or None}" required='True' name="email" label="${u'Email Pengguna'}" placeholder="${u'Email Pengguna'}" />
+
+
+      ${baka.ui.tags.submit('register', u'Simpan', class_="btn btn-primary") if not readonly else ''}
+      ${baka.ui.tags.end_form()}
+
+</%self.widgets:panel>

@@ -1,0 +1,31 @@
+--- user = None
+    if request.authenticated_userid:
+      User = request.find_model('pengguna')
+      user = User.get_by_email(request.db, request.authenticated_userid)
+
+.header.nav-bar
+  .container
+    .ui-flex
+      .f-west
+        .left
+          a href="/"
+            img.logo.inline-box src="/static/img/mark-zi.png"
+        .pad-nav style="margin-left: 6px;"
+          a.nav-a href=""
+            span : EN
+          a.nav-a href=""
+            span : ID
+
+      .f-east
+        .nav-li
+          .left
+            .pad-nav
+              a.nav-a href="/" title="Profile"
+                img.box.inline-box.img src="/static/img/mark-zi.png" alt="" id="profile_pic_header_1502087947":
+                span: ${user and user.username or 'Home'}
+              -unless request.authenticated_userid
+                a.nav-a href=request.route_url('login_pengguna') title="Login"
+                  span : ${u'Login' | n}
+              -else
+                a.nav-a href=request.route_url('logout_pengguna') title="Logout"
+                  span : ${u'Logout' | n}

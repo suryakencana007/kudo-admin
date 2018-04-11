@@ -1,0 +1,36 @@
+css-vendor:
+  filters: cssmin
+  depends: '**/*.scss'
+  output: BahnMaze:public/vendor.%(version)s.css
+  contents:
+    - ../../node_modules/bootstrap/dist/css/bootstrap.css
+    - css/dataTables.bootstrap.css
+    - css/inputfield.css
+    - css/navigation.css
+    - css/navbar.css
+
+js-vendor:
+  config:
+    UGLIFYJS_BIN: ./node_modules/.bin/uglifyjs
+  filters: uglifyjs
+  output: BahnMaze:public/vendor.%(version)s.js
+  contents:
+    - ../node_modules/jquery/dist/jquery.js
+    - ../node_modules/bootstrap/dist/js/bootstrap.js
+    - ../node_modules/lodash/lodash.js
+    - js/jquery.parser.js
+    - js/jquery.form.js
+    - js/jquery.dataTables.js
+    - js/dataTables.bootstrap.js
+
+
+baka-js:
+  filters: jsmin
+  output: BahnMaze:public/baka.%(version)s.js
+  contents:
+    - js/baka/class.js
+    - js/baka/baka.js
+    - js/baka/fun.js
+    - js/baka/app.js
+    - js/baka/helpers.js
+    - js/baka/forms.js

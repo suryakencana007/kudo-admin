@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    image: bahnmaze:20180404519
+    ports:
+      - "5078:5000"
+    environment:
+      DATABASE_URL: sqlite:///circleapp.db
+    volumes:
+      - .:/code

@@ -1,0 +1,36 @@
+-inherit file="BahnMaze:templates/_base.html"
+
+-def page_title()
+  ${title or ''}
+
+
+<%self.widgets:panel>
+    .form-login
+        img src="/static/img/mark-zi.png"
+        h2.red.title
+        span ${u'Login Pengguna'}
+        ${baka.ui.tags.form(
+            action or request.url,
+            class_="_ajax %s" % ('readonly' if readonly else ''),
+            autocomplete="off",
+            hidden_fields=[('csrf_token', request.session.get_csrf_token())])}
+
+            <%self.widgets:textfield name="email" label="${u'Email Pengguna'}" placeholder="${u'Email pengguna anda'}" />
+            <%self.widgets:textfield type="password" name="password" label="${u'Kata Sandi'}" placeholder="${u'Kata Sandi'}" />
+
+        ${baka.ui.tags.submit('login', u'Masuk', class_="btn btn-primary") if not readonly else ''}
+        ${baka.ui.tags.end_form()}
+</%self.widgets:panel>
+
+
+-block css
+    style type="text/css"
+        .form-login {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-login img {
+            width: 50%;
+            margin: 0 25%;
+        }

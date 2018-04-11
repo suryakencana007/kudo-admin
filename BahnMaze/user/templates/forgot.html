@@ -1,0 +1,35 @@
+-inherit file="BahnMaze:templates/_base.html"
+
+-def page_title()
+  ${title or ''}
+
+
+<%self.widgets:panel>
+  .row
+    .col-md-12
+      ${errors or ''}
+  .row
+    .col-md-12.col-xs-12
+      h2.red.title
+        span ${'Form Lupa Kata Sandi'}
+      h4.red.title
+        span Hi, ${username or 'Folks'}
+
+      ${baka.ui.tags.form(
+        action or request.url,
+        class_="_ajax %s" % ('readonly' if readonly else ''),
+        autocomplete="off",
+        hidden_fields=[
+            ('csrf_token', request.session.get_csrf_token()),
+            ('uid', uid or None)
+        ])}
+
+      <%self.widgets:textfield type="password" required='True' name="password_old" label="${u'Kata Sandi Lama'}" placeholder="${u'Kata Sandi Lama'}" />
+      <%self.widgets:textfield type="password" required='True' name="password" label="${u'Kata Sandi'}" placeholder="${u'Kata Kunci'}" />
+      <%self.widgets:textfield type="password" required='True' name="password_confirm" label="${u'Konfirm Kata Sandi'}" placeholder="${u'Input kata kunci kembali'}" />
+
+
+      ${baka.ui.tags.submit('register', u'Simpan', class_="btn btn-primary") if not readonly else ''}
+      ${baka.ui.tags.end_form()}
+
+</%self.widgets:panel>
